@@ -1,12 +1,93 @@
-    :root {
-  --red: #c30000;
-  --black: #0f0f0f;
-  --white: #ffffff;
-  --gray: #e5e5e5;
+/* RESET GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FULL VIEWPORT */
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  --accent: #e53935;
+}
+
+body[data-theme="dark"] {
+  --bg: #000;
+  --bg-secondary: #0b0b0b;
+  --text: #fff;
+  --text-muted: #bbb;
+}
+
+body[data-theme="light"] {
+  --bg: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --text: #111;
+  --text-muted: #555;
 }
 
 body {
-  background-color: var(--white);
-  color: var(--black);
-  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+/* DARK THEME */
+body[data-theme="dark"] {
+  --bg: #000000;
+  --bg-secondary: #0b0b0b;
+  --text: #ffffff;
+  --text-muted: #b5b5b5;
+}
+
+/* LIGHT THEME */
+body[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --text: #111111;
+  --text-muted: #555555;
+}
+
+/* GLOBAL STYLES */
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* CONTAINER UTIL */
+.container {
+  padding: 2rem 8%;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--accent);
+  color: #fff;
+  padding: 16px;
+  border-radius: 50%;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
 }

@@ -1,19 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../styles/theme.css";
 
-export default function Navbar() {
+const Navbar = () => {
   return (
-    <nav style={{
-      background: "var(--black)",
-      padding: "1rem",
-      display: "flex",
-      justifyContent: "space-between"
-    }}>
-      <strong style={{ color: "var(--red)" }}>LABCYS</strong>
-      <div>
-        <Link to="/" style={{ color: "#fff", marginRight: 20 }}>Home</Link>
-        <Link to="/servicios" style={{ color: "#fff", marginRight: 20 }}>Services</Link>
-        <Link to="/contacto" style={{ color: "#fff" }}>Contact</Link>
+    <nav className="navbar">
+      <div className="logo">LABCYS</div>
+      <div className="links">
+        <NavLink to="/">Inicio</NavLink>
+        <NavLink to="/servicios">Servicios</NavLink>
+        <NavLink to="/contacto">Contacto</NavLink>
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

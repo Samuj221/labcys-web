@@ -1,39 +1,17 @@
-import { Outlet } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import { ThemeProvider } from "./context/ThemeContext";
+import { LanguageProvider } from "./context/LanguageContext";
 
-function MainLayout() {
-  return (
-    <>
-      {/* SEO base global */}
-      <Helmet>
-        <title>LABCYS | Metrology & Calibration Solutions</title>
-        <meta
-          name="description"
-          content="LABCYS provides professional metrology, calibration, and laboratory solutions with precision, reliability, and international standards compliance."
-        />
-      </Helmet>
-
-      <div className="min-h-screen flex flex-col bg-black text-white">
-        {/* NAVBAR */}
-        <Navbar />
-
-        {/* CONTENIDO DINÁMICO */}
-        <main className="flex-1 pt-20">
-          <Outlet />
-        </main>
-
-        {/* FOOTER */}
-        <Footer />
-
-        {/* WHATSAPP FLOTANTE */}
-        <WhatsAppButton />
-      </div>
-    </>
-  );
-}
-
-export default MainLayout;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </ThemeProvider>
+  </React.StrictMode>
+);

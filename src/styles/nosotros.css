@@ -1,0 +1,151 @@
+.nosotros {
+  width: 100%;
+  color: #fff;
+}
+
+/* HERO */
+.nosotros-hero {
+  min-height: 70vh;
+  background: url("/images/about/about-hero.jpg") center / cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nosotros-hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+}
+
+.hero-content {
+  position: relative;
+  padding: 0 8%;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+}
+
+.hero-content p {
+  margin-top: 15px;
+  color: #ccc;
+}
+
+/* SECCIONES */
+.nosotros-section {
+  padding: 100px 8%;
+}
+
+.nosotros-section.dark {
+  background: #0b0b0b;
+}
+
+.nosotros-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+}
+
+.nosotros-section p {
+  max-width: 800px;
+  color: #ccc;
+}
+
+/* MVV */
+.mvv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 80px 8%;
+}
+
+.mvv .card {
+  background: #111;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.mvv h3 {
+  color: #e53935;
+}
+
+.mvv li {
+  list-style: none;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+/* DIFERENCIA */
+.diferenciales {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.diferenciales h4 {
+  color: #e53935;
+}
+
+/* TEAM */
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-card {
+  background: #111;
+  border-radius: 12px;
+  text-align: center;
+  padding: 25px;
+}
+
+.team-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* TRUST */
+.trust {
+  padding: 80px 8%;
+  background: #0b0b0b;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.trust-grid div {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* CTA */
+.nosotros-cta {
+  padding: 100px 8%;
+  text-align: center;
+}
+
+.nosotros-cta h2 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.btn.primary {
+  background: #e53935;
+  padding: 14px 30px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}

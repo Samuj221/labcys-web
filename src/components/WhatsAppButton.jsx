@@ -1,19 +1,14 @@
-export default function WhatsAppButton() {
+const WhatsAppButton = () => {
   return (
     <a
-      href="https://wa.me/123456789"
+      href="https://wa.me/573000000000"
       target="_blank"
-      style={{
-        position: "fixed",
-        bottom: 20,
-        right: 20,
-        background: "var(--red)",
-        color: "#fff",
-        padding: "12px",
-        borderRadius: "50%"
-      }}
+      rel="noreferrer"
+      className="whatsapp"
     >
-      WA
+      WhatsApp
     </a>
   );
-}
+};
+
+export default WhatsAppButton;
