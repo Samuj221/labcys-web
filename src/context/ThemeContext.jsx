@@ -6,11 +6,12 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () =>
+  const toggleTheme = () => {
     setTheme(prev => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

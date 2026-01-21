@@ -1,0 +1,22 @@
+/* CONTENEDOR GLOBAL DE TODAS LAS PÁGINAS */
+.app-main {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* navbar height aprox */
+  background: var(--bg);
+  padding-top: 80px;
+}
+
+/* CONTENEDOR ESTÁNDAR PARA TODAS LAS PÁGINAS */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 8%;
+}
+
+/* HERO FULL WIDTH (solo si una página lo necesita) */
+.page-hero {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}

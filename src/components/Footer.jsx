@@ -1,85 +1,41 @@
-import "../styles/Footer.css";
-import logo from "../images/logo-labcys.png";
-import { useLanguage } from "../context/LanguageContext";
+import "../styles/footer.css";
 
-export default function Footer() {
-  const { lang } = useLanguage();
-
-  const t = {
-    es: {
-      desc: "Soluciones metrológicas confiables bajo estándares internacionales.",
-      links: "Enlaces",
-      services: "Servicios",
-      about: "Nosotros",
-      contact: "Contacto",
-      location: "Ubicación",
-      rights: "Todos los derechos reservados",
-      follow: "Síguenos",
-    },
-    en: {
-      desc: "Reliable metrology solutions under international standards.",
-      links: "Links",
-      services: "Services",
-      about: "About us",
-      contact: "Contact",
-      location: "Location",
-      rights: "All rights reserved",
-      follow: "Follow us",
-    },
-  };
-
+export default function Footer({ lang }) {
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* BRAND */}
-        <div className="footer-brand">
-          <img src={logo} alt="LABCYS Logo" />
-          <p>{t[lang].desc}</p>
-
-          <div className="social">
-            <span>{t[lang].follow}</span>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
+        <div className="footer-col">
+          <h3>LABCYS</h3>
+          <p>
+            {lang === "es"
+              ? "Soluciones metrológicas confiables, trazables y acreditadas."
+              : "Reliable, traceable and accredited metrological solutions."}
+          </p>
         </div>
 
-        {/* LINKS */}
-        <div className="footer-links">
-          <h4>{t[lang].links}</h4>
-          <a href="/servicios">{t[lang].services}</a>
-          <a href="/nosotros">{t[lang].about}</a>
-          <a href="/contacto">{t[lang].contact}</a>
+        <div className="footer-col">
+          <h4>{lang === "es" ? "Servicios" : "Services"}</h4>
+          <ul>
+            <li>Calibración</li>
+            <li>Ensayos</li>
+            <li>Consultoría</li>
+            <li>Soporte técnico</li>
+          </ul>
         </div>
 
-        {/* INFO */}
-        <div className="footer-info">
-          <h4>LABCYS</h4>
-          <p>📧 contacto@labcys.com</p>
-          <p>📞 +57 300 000 0000</p>
-          <p>📍 Bogotá, Colombia</p>
+        <div className="footer-col">
+          <h4>{lang === "es" ? "Contacto" : "Contact"}</h4>
+          <ul>
+            <li>info@labcys.com</li>
+            <li>+57 300 000 0000</li>
+            <li>Bogotá – Colombia</li>
+          </ul>
         </div>
-
-        {/* MAP */}
-        <div className="footer-map">
-          <iframe
-            title="LABCYS Location"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Cl.+8c+%2378-90,+Bogotá&output=embed"
-          />
-        </div>
-
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} LABCYS · {t[lang].rights}
+        © {new Date().getFullYear()} LABCYS · ISO/IEC 17025
       </div>
     </footer>
   );

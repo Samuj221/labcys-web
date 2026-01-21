@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import logo from "../images/logo-labcys.png";
+import logo from "/images/logo-labcys.png";
 import "../styles/Header.css";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";

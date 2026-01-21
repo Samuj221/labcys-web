@@ -1,17 +1,33 @@
 import { NavLink } from "react-router-dom";
-import "../styles/theme.css";
+import "../styles/navbar.css";
 
-const Navbar = () => {
+export default function Navbar({ theme, setTheme, lang, setLang }) {
   return (
-    <nav className="navbar">
-      <div className="logo">LABCYS</div>
-      <div className="links">
-        <NavLink to="/">Inicio</NavLink>
-        <NavLink to="/servicios">Servicios</NavLink>
-        <NavLink to="/contacto">Contacto</NavLink>
-      </div>
-    </nav>
-  );
-};
+    <header className="navbar">
+      <div className="navbar-container">
 
-export default Navbar;
+        <NavLink to="/" className="logo">
+          LABCYS
+        </NavLink>
+
+        <nav className="nav-links">
+          <NavLink to="/" end>{lang === "es" ? "Inicio" : "Home"}</NavLink>
+          <NavLink to="/servicios">{lang === "es" ? "Servicios" : "Services"}</NavLink>
+          <NavLink to="/nosotros">{lang === "es" ? "Nosotros" : "About"}</NavLink>
+          <NavLink to="/contacto">{lang === "es" ? "Contacto" : "Contact"}</NavLink>
+        </nav>
+
+        <div className="nav-actions">
+          <button className="lang-btn" onClick={() => setLang(lang === "es" ? "en" : "es")}>
+            {lang === "es" ? "EN" : "ES"}
+          </button>
+
+          <button className="theme-btn" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
+        </div>
+
+      </div>
+    </header>
+  );
+}

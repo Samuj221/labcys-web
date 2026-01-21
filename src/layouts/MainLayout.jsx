@@ -1,22 +1,24 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import "../styles/layout.css";
 
-const MainLayout = () => {
+export default function MainLayout({ theme, setTheme, lang, setLang }) {
   return (
-    <div className="app-layout">
-      <Header />
+    <>
+      <Navbar
+        theme={theme}
+        setTheme={setTheme}
+        lang={lang}
+        setLang={setLang}
+      />
 
-      {/* CONTENIDO CENTRAL */}
-      <main className="main-content">
+      {/* CONTENEDOR GLOBAL */}
+      <main className="app-main">
         <Outlet />
       </main>
 
-      <Footer />
-      <WhatsAppButton />
-    </div>
+      <Footer lang={lang} />
+    </>
   );
-};
-
-export default MainLayout;
+}

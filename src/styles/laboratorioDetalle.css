@@ -1,0 +1,173 @@
+/* ===========================
+   LAB DETAIL PAGE
+=========================== */
+
+.lab-detail {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.lab-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  background-size: cover;
+  background-position: center;
+}
+
+.lab-hero-content {
+  max-width: 820px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.lab-hero h1 {
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.lab-hero p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.lab-content {
+  padding: 110px 8%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 50px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lab-description {
+  max-width: 760px;
+  color: var(--text-muted);
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+/* LIST */
+.lab-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 24px;
+}
+
+.lab-list li {
+  background: var(--bg-secondary);
+  padding: 26px 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.06);
+  position: relative;
+  padding-left: 52px;
+  color: var(--text-muted);
+}
+
+.lab-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 24px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* ===========================
+   MARKETING
+=========================== */
+
+.lab-marketing {
+  padding: 100px 8%;
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.lab-marketing h2 {
+  font-size: clamp(2rem,4vw,2.6rem);
+  margin-bottom: 40px;
+}
+
+.marketing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 22px;
+}
+
+.marketing-grid div {
+  background: rgba(255,255,255,.03);
+  padding: 22px 26px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+/* ===========================
+   CTA
+=========================== */
+
+.lab-cta {
+  padding: 100px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: #fff;
+}
+
+/* ===========================
+   NOT FOUND
+=========================== */
+
+.lab-not-found {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 900px) {
+  .lab-hero {
+    justify-content: center;
+    text-align: center;
+    padding: 0 6%;
+  }
+
+  .lab-content {
+    padding: 80px 6%;
+  }
+
+  .lab-marketing,
+  .lab-cta {
+    padding: 80px 6%;
+  }
+}

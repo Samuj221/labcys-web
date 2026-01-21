@@ -1,221 +1,179 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styles/home.css";
-import { useLanguage } from "../context/LanguageContext";
 
-const servicesData = {
-  es: [
-    {
-      title: "Calibración",
-      desc: "Calibración acreditada y por trazabilidad conforme a ISO/IEC 17025.",
-      slug: "calibracion",
-      image: "/images/service-calibration.jpg",
-    },
-    {
-      title: "Tanques y Carrotanques",
-      desc: "Aforo volumétrico desde 42 hasta 21.000 galones.",
-      slug: "tanques",
-      image: "/images/service-tanks.jpg",
-    },
-    {
-      title: "Recipientes Volumétricos",
-      desc: "Serafines, probetas y patrones volumétricos.",
-      slug: "recipientes",
-      image: "/images/service-volume.jpg",
-    },
-    {
-      title: "Temperatura y Presión",
-      desc: "Instrumentos térmicos y de presión hasta 1000 psi.",
-      slug: "temperatura-presion",
-      image: "/images/service-temp.jpg",
-    },
-    {
-      title: "Inspección Técnica",
-      desc: "Evaluación metrológica bajo normas internacionales.",
-      slug: "inspeccion",
-      image: "/images/service-inspection.jpg",
-    },
-    {
-      title: "Asesorías",
-      desc: "Implementación y auditorías ISO/IEC 17025.",
-      slug: "asesorias",
-      image: "/images/service-consulting.jpg",
-    },
-  ],
-  en: [
-    {
-      title: "Calibration",
-      desc: "Accredited and traceable calibration under ISO/IEC 17025.",
-      slug: "calibracion",
-      image: "/images/service-calibration.jpg",
-    },
-    {
-      title: "Tanks & Tank Trucks",
-      desc: "Volumetric calibration from 42 to 21,000 gallons.",
-      slug: "tanques",
-      image: "/images/service-tanks.jpg",
-    },
-    {
-      title: "Volumetric Measures",
-      desc: "Standards, flasks and volumetric equipment.",
-      slug: "recipientes",
-      image: "/images/service-volume.jpg",
-    },
-    {
-      title: "Temperature & Pressure",
-      desc: "Thermal and pressure instruments up to 1000 psi.",
-      slug: "temperatura-presion",
-      image: "/images/service-temp.jpg",
-    },
-    {
-      title: "Technical Inspection",
-      desc: "Metrological evaluation under international standards.",
-      slug: "inspeccion",
-      image: "/images/service-inspection.jpg",
-    },
-    {
-      title: "Consulting",
-      desc: "ISO/IEC 17025 implementation and audits.",
-      slug: "asesorias",
-      image: "/images/service-consulting.jpg",
-    },
-  ],
-};
-
-export default function Home() {
-  const { lang } = useLanguage();
-  const services = servicesData[lang];
-
+export default function Home({ lang }) {
   return (
     <main className="home">
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-content">
+      {/* ================= HERO ================= */}
+      <section className="home-hero">
+        <div className="home-hero-content">
           <h1>
             {lang === "es"
-              ? "Soluciones\nMetrológicas\nConfiables"
-              : "Reliable\nMetrology\nSolutions"}
+              ? "Metrología confiable para la industria moderna"
+              : "Reliable metrology for modern industry"}
           </h1>
 
           <p>
             {lang === "es"
-              ? "Servicios de calibración, inspección y asesoría técnica bajo estándares internacionales."
-              : "Calibration, inspection and technical consulting services under international standards."}
+              ? "En LABCYS brindamos servicios de calibración acreditados, trazables y alineados con estándares internacionales, asegurando precisión, confiabilidad y cumplimiento normativo."
+              : "At LABCYS we provide accredited and traceable calibration services aligned with international standards, ensuring precision, reliability and regulatory compliance."}
           </p>
 
-          <div className="hero-buttons">
-            <Link to="/contacto" className="btn primary">
-              {lang === "es" ? "Contáctanos" : "Contact us"}
-            </Link>
-            <Link to="/servicios" className="btn outline">
-              {lang === "es" ? "Nuestros Servicios" : "Our Services"}
-            </Link>
+          <div className="home-hero-actions">
+            <NavLink to="/servicios" className="btn-primary">
+              {lang === "es" ? "Ver servicios" : "View services"}
+            </NavLink>
+
+            <NavLink to="/contacto" className="btn-outline">
+              {lang === "es" ? "Solicitar cotización" : "Request a quote"}
+            </NavLink>
           </div>
         </div>
       </section>
 
-      {/* CERTIFICADOS */}
-      <section className="cert-validate">
-        <div className="cert-wrapper">
-
-          <div className="cert-text">
-            <h2>
-              {lang === "es"
-                ? "Valida tu certificado de calibración"
-                : "Validate your calibration certificate"}
-            </h2>
-
+      {/* ================= TRUST BAR ================= */}
+      <section className="home-trust">
+        <div className="trust-grid">
+          <div>
+            <h3>ISO/IEC 17025</h3>
             <p>
               {lang === "es"
-                ? "Plataforma oficial para verificar la autenticidad de los certificados emitidos por LABCYS."
-                : "Official platform to verify calibration certificates issued by LABCYS."}
+                ? "Cumplimiento con normas internacionales"
+                : "Compliance with international standards"}
             </p>
-
-            <a href="https://labcyscert.com/" target="_blank" rel="noreferrer">
-              {lang === "es" ? "Ir al sistema →" : "Go to platform →"}
-            </a>
           </div>
 
-          <div className="cert-card">
-            <h3>{lang === "es" ? "Acceso seguro" : "Secure access"}</h3>
+          <div>
+            <h3>+10 años</h3>
             <p>
               {lang === "es"
-                ? "Consulta rápida, confiable y disponible 24/7."
-                : "Fast, reliable and 24/7 available consultation."}
+                ? "Experiencia en metrología industrial"
+                : "Industrial metrology experience"}
             </p>
-            <span>
-              {lang === "es" ? "Validar ahora →" : "Validate now →"}
-            </span>
           </div>
 
+          <div>
+            <h3>Trazabilidad</h3>
+            <p>
+              {lang === "es"
+                ? "Resultados confiables y verificables"
+                : "Reliable and traceable results"}
+            </p>
+          </div>
+
+          <div>
+            <h3>Industria</h3>
+            <p>
+              {lang === "es"
+                ? "Soluciones para múltiples sectores"
+                : "Solutions for multiple industries"}
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="about">
-        <h2>{lang === "es" ? "¿Quiénes somos?" : "Who we are"}</h2>
-        <p>
-          {lang === "es"
-            ? "LABCYS es un laboratorio especializado en servicios metrológicos, enfocado en la confiabilidad y trazabilidad de las mediciones."
-            : "LABCYS is a laboratory specialized in metrology services, focused on measurement reliability and traceability."}
-        </p>
-      </section>
-
-      {/* MISION / VISION */}
-      <section className="mv">
-        <div>
-          <h3>{lang === "es" ? "Misión" : "Mission"}</h3>
-          <p>
-            {lang === "es"
-              ? "Garantizar resultados confiables que respalden la calidad de nuestros clientes."
-              : "Guarantee reliable results that support our clients' quality."}
-          </p>
-        </div>
-
-        <div>
-          <h3>{lang === "es" ? "Visión" : "Vision"}</h3>
-          <p>
-            {lang === "es"
-              ? "Ser referentes en metrología aplicada a nivel internacional."
-              : "To be an international reference in applied metrology."}
-          </p>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="services">
-        <h2>{lang === "es" ? "Servicios Especializados" : "Specialized Services"}</h2>
-
-        <div className="services-grid">
-          {services.map((s, i) => (
-            <div className="service-card" key={i}>
-              <div
-                className="service-image"
-                style={{ backgroundImage: `url(${s.image})` }}
-              />
-              <div className="service-info">
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-                <Link to={`/servicios/${s.slug}`}>
-                  {lang === "es" ? "Ver más →" : "Learn more →"}
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="cta">
+      {/* ================= SERVICES ================= */}
+      <section className="home-services">
         <h2>
-          {lang === "es"
-            ? "¿Necesitas soporte metrológico confiable?"
-            : "Need reliable metrology support?"}
+          {lang === "es" ? "Nuestros servicios" : "Our services"}
         </h2>
 
-        <Link to="/contacto" className="btn outline">
-          {lang === "es" ? "Habla con nosotros" : "Get in touch"}
-        </Link>
+        <div className="services-grid">
+
+          {/* CALIBRACIÓN */}
+          <article className="service-card">
+            <img src="/images/calibracion.jpg" alt="Calibración" />
+            <div className="service-content">
+              <h3>Calibración</h3>
+              <p>
+                {lang === "es"
+                  ? "Servicios de calibración acreditados bajo ISO/IEC 17025, garantizando trazabilidad metrológica, exactitud y confiabilidad en instrumentos de medición."
+                  : "Accredited calibration services under ISO/IEC 17025, ensuring metrological traceability, accuracy and reliability."}
+              </p>
+              <NavLink to="/servicios/calibracion">
+                {lang === "es" ? "Ver más" : "Learn more"}
+              </NavLink>
+            </div>
+          </article>
+
+          {/* INSPECCIÓN */}
+          <article className="service-card">
+            <img src="/images/inspeccion.jpg" alt="Inspección" />
+            <div className="service-content">
+              <h3>Inspección</h3>
+              <p>
+                {lang === "es"
+                  ? "Inspección técnica de equipos e instrumentos, verificación dimensional y funcional, asegurando cumplimiento normativo y reducción de riesgos."
+                  : "Technical inspection of equipment and instruments, dimensional and functional verification ensuring regulatory compliance."}
+              </p>
+              <NavLink to="/servicios/inspeccion">
+                {lang === "es" ? "Ver más" : "Learn more"}
+              </NavLink>
+            </div>
+          </article>
+
+          {/* ASESORÍAS */}
+          <article className="service-card">
+            <img src="/images/asesorias.jpg" alt="Asesorías" />
+            <div className="service-content">
+              <h3>Asesorías</h3>
+              <p>
+                {lang === "es"
+                  ? "Acompañamiento técnico especializado para la implementación, mantenimiento y mejora de sistemas de gestión ISO/IEC 17025."
+                  : "Specialized technical consulting for implementation, maintenance and improvement of ISO/IEC 17025 management systems."}
+              </p>
+              <NavLink to="/servicios/asesorias">
+                {lang === "es" ? "Ver más" : "Learn more"}
+              </NavLink>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      {/* ================= ABOUT ================= */}
+      <section className="home-about">
+        <div className="about-content">
+          <h2>
+            {lang === "es" ? "¿Por qué LABCYS?" : "Why LABCYS?"}
+          </h2>
+
+          <p>
+            {lang === "es"
+              ? "LABCYS es un laboratorio especializado en metrología industrial, enfocado en ofrecer soluciones confiables que fortalezcan la calidad, seguridad y competitividad de nuestros clientes."
+              : "LABCYS is a laboratory specialized in industrial metrology, focused on delivering reliable solutions that strengthen quality, safety and competitiveness."}
+          </p>
+
+          <p>
+            {lang === "es"
+              ? "Nuestro equipo está conformado por profesionales altamente calificados, tecnología de vanguardia y una filosofía basada en la mejora continua."
+              : "Our team is made up of highly qualified professionals, cutting-edge technology and a continuous improvement philosophy."}
+          </p>
+        </div>
+
+        <div className="about-image">
+          <img src="/images/lab.jpg" alt="Laboratorio LABCYS" />
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="home-cta">
+        <h2>
+          {lang === "es"
+            ? "¿Listo para asegurar la confiabilidad de tus mediciones?"
+            : "Ready to ensure measurement reliability?"}
+        </h2>
+
+        <p>
+          {lang === "es"
+            ? "Contáctanos y recibe asesoría personalizada para tus necesidades metrológicas."
+            : "Contact us and receive personalized advice for your metrology needs."}
+        </p>
+
+        <NavLink to="/contacto" className="btn-primary large">
+          {lang === "es" ? "Contáctanos" : "Contact us"}
+        </NavLink>
       </section>
 
     </main>
