@@ -1,70 +1,72 @@
-import { useParams, Link } from "react-router-dom";
-import "../styles/laboratorioDetalle.css";
+import { useParams } from "react-router-dom";
+import laboratories from "../data/laboratories";
+import { motion } from "framer-motion";
+import "../styles/laboratorio.css";
 
-export default function LaboratorioDetalle({ lang }) {
-  const { slug, lab } = useParams();
+export default function LaboratorioDetalle() {
+  const { slug } = useParams();
+  const lab = laboratories.find(l => l.slug === slug);
 
-  const laboratorios = {
-    volumen: {
-      titulo: "Laboratorio de Volumen",
-      descripcion:
-        "Calibración volumétrica de carrotanques, tanques verticales y recipientes.",
-    },
-    instrumentos: {
-      titulo: "Laboratorio de Instrumentos",
-      descripcion:
-        "Calibración de instrumentos de presión, temperatura, humedad y medición.",
-    },
-  };
-
-  const laboratorio = laboratorios[lab];
-
-  if (!laboratorio) {
-    return (
-      <section className="lab-detail">
-        <div className="page-container">
-          <h2>Laboratorio no encontrado</h2>
-          <Link className="back-link" to={`/servicios/${slug}`}>
-            ← Volver al servicio
-          </Link>
-        </div>
-      </section>
-    );
-  }
+  if (!lab) return <h2>Laboratorio no encontrado</h2>;
 
   return (
-    <section className="lab-detail">
+    <section className="lab-container">
 
       {/* HERO */}
-      <div className="page-hero lab-hero">
-        <div className="page-container">
-          <h1>{laboratorio.titulo}</h1>
-          <p>{laboratorio.descripcion}</p>
-        </div>
-      </div>
+      <motion.div
+        className="lab-hero"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h1>{lab.name}</h1>
+        <p>{lab.hero}</p>
+      </motion.div>
 
-      {/* CONTENIDO */}
-      <div className="page-container lab-content">
+      {/* DESCRIPCIÓN */}
+      <motion.p
+        className="lab-description"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        {lab.description}
+      </motion.p>
 
-        <Link className="back-link" to={`/servicios/${slug}`}>
-          ← Volver al servicio
-        </Link>
+      {/* SERVICIOS */}
+      <motion.div
+        className="lab-section"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        <h2>Servicios de calibración</h2>
+        <ul>
+          {lab.services.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ul>
+      </motion.div>
 
-        <div className="lab-info">
-          <p>
-            Todos nuestros procedimientos cumplen con normas internacionales,
-            garantizando resultados confiables, trazables y certificados.
-          </p>
+      {/* RANGOS */}
+      <motion.div
+        className="lab-section highlight"
+        whileHover={{ scale: 1.02 }}
+      >
+        <h2>Rangos de medición</h2>
+        <ul>
+          {lab.ranges.map((r, i) => (
+            <li key={i}>{r}</li>
+          ))}
+        </ul>
+      </motion.div>
 
-          <ul>
-            <li>✔ Certificados trazables</li>
-            <li>✔ Equipos calibrados</li>
-            <li>✔ Personal especializado</li>
-            <li>✔ Cumplimiento ISO/IEC 17025</li>
-          </ul>
-        </div>
+      {/* CTA */}
+      <motion.div
+        className="lab-cta"
+        whileHover={{ scale: 1.05 }}
+      >
+        <a href="/contacto">Solicitar calibración</a>
+      </motion.div>
 
-      </div>
     </section>
   );
 }

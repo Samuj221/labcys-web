@@ -1,70 +1,43 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import serviciosDetalle from "../data/serviciosDetalle";
 import "../styles/servicioDetalle.css";
 
-export default function ServicioDetalle({ lang }) {
+export default function ServicioDetalle() {
   const { slug } = useParams();
-
-  const servicios = {
-    calibracion: {
-      titulo: "Servicios de Calibración",
-      descripcion:
-        "Calibraciones confiables y trazables alineadas con estándares internacionales.",
-    },
-    inspeccion: {
-      titulo: "Inspección & Aseguramiento",
-      descripcion:
-        "Servicios de inspección técnica, pruebas y auditorías especializadas.",
-    },
-  };
-
-  const servicio = servicios[slug];
+  const servicio = serviciosDetalle[slug];
 
   if (!servicio) {
-    return (
-      <section className="service-detail">
-        <div className="page-container">
-          <h2>Servicio no encontrado</h2>
-          <Link className="back-link" to="/servicios">
-            ← Volver a Servicios
-          </Link>
-        </div>
-      </section>
-    );
+    return <Navigate to="/404" />;
   }
 
   return (
-    <section className="service-detail">
+    <motion.section
+      className="servicio-detalle"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <header className="servicio-header">
+        <h1>{servicio.title}</h1>
+        <p>{servicio.description}</p>
+      </header>
 
-      {/* HERO */}
-      <div className="page-hero service-hero">
-        <div className="page-container">
-          <h1>{servicio.titulo}</h1>
-          <p>{servicio.descripcion}</p>
-        </div>
+      <div className="servicio-image">
+        <img src={servicio.image} alt={servicio.title} />
       </div>
 
-      {/* CONTENIDO */}
-      <div className="page-container service-content">
-
-        <Link className="back-link" to="/servicios">
-          ← Volver a Servicios
-        </Link>
-
-        <div className="labs-grid">
-          <Link to={`/servicios/${slug}/volumen`} className="lab-card">
-            <h3>Laboratorio de Volumen</h3>
-            <p>Calibración volumétrica de tanques y recipientes.</p>
-            <span className="lab-link">Ver laboratorio →</span>
-          </Link>
-
-          <Link to={`/servicios/${slug}/instrumentos`} className="lab-card">
-            <h3>Laboratorio de Instrumentos</h3>
-            <p>Calibración de presión, temperatura y medición.</p>
-            <span className="lab-link">Ver laboratorio →</span>
-          </Link>
-        </div>
-
-      </div>
-    </section>
+      <ul className="servicio-list">
+        {servicio.content.map((item, i) => (
+          <motion.li
+            key={i}
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: i * 0.1 }}
+          >
+            {item}
+          </motion.li>
+        ))}
+      </ul>
+    </motion.section>
   );
 }

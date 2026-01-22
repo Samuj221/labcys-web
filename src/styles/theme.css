@@ -1,23 +1,11 @@
 /* ===========================
    DESIGN SYSTEM – LABCYS
-   LIGHT / DARK THEME
 =========================== */
-:root {
-  --bg: #0b0b0d;
-  --bg-secondary: #121216;
-  --bg-card: #16161c;
 
-  --text: #ffffff;
-  --text-muted: #b7b7c2;
+/* ===========================
+   RESET & BASE
+=========================== */
 
-  --accent: #e53935;
-  --accent-soft: rgba(229, 57, 53, 0.15);
-
-  --border: rgba(255,255,255,0.08);
-  --shadow: 0 25px 60px rgba(0,0,0,0.65);
-}
-
-/* RESET */
 *,
 *::before,
 *::after {
@@ -32,17 +20,18 @@ html {
 
 body {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
   background: var(--bg);
   color: var(--text);
   transition: background .35s ease, color .35s ease;
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ===========================
-   THEME VARIABLES
+   THEME TOKENS
 =========================== */
 
-/* DARK MODE (DEFAULT) */
+/* DARK (default) */
 body[data-theme="dark"] {
   --bg: #0b0b0d;
   --bg-secondary: #121216;
@@ -58,7 +47,7 @@ body[data-theme="dark"] {
   --shadow: 0 25px 60px rgba(0,0,0,0.65);
 }
 
-/* LIGHT MODE */
+/* LIGHT */
 body[data-theme="light"] {
   --bg: #f5f6f8;
   --bg-secondary: #ffffff;
@@ -80,6 +69,7 @@ body[data-theme="light"] {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 img {
@@ -88,15 +78,41 @@ img {
 }
 
 /* ===========================
+   TYPOGRAPHY
+=========================== */
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* ===========================
    BUTTONS
 =========================== */
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 14px 36px;
-  border-radius: 12px;
+  border-radius: 999px;
   font-weight: 600;
-  text-decoration: none;
   border: none;
   cursor: pointer;
   transition: all .35s ease;
@@ -124,15 +140,7 @@ img {
 }
 
 /* ===========================
-   SECTIONS
-=========================== */
-
-section {
-  position: relative;
-}
-
-/* ===========================
-   CARDS
+   CARDS (GENERIC)
 =========================== */
 
 .card {
@@ -149,43 +157,13 @@ section {
 }
 
 /* ===========================
-   TITLES
-=========================== */
-
-h1, h2, h3, h4 {
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-h1 {
-  font-size: clamp(2.6rem, 5vw, 4rem);
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-}
-
-h3 {
-  font-size: 1.4rem;
-}
-
-/* ===========================
-   TEXT
-=========================== */
-
-p {
-  color: var(--text-muted);
-}
-
-/* ===========================
-   BACK LINK
+   LINKS
 =========================== */
 
 .back-link {
   display: inline-block;
   margin-bottom: 40px;
   color: var(--accent);
-  text-decoration: none;
   font-weight: 600;
 }
 
@@ -194,7 +172,7 @@ p {
 }
 
 /* ===========================
-   FORMS (CONTACTO)
+   FORMS
 =========================== */
 
 input,
@@ -241,13 +219,13 @@ textarea:focus {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
 }
 
 /* ===========================
@@ -255,11 +233,6 @@ textarea:focus {
 =========================== */
 
 @media (max-width: 900px) {
-  h1 {
-    font-size: 2.4rem;
-  }
-
-  h2 {
-    font-size: 1.9rem;
-  }
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.9rem; }
 }

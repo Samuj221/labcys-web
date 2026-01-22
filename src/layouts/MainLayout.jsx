@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../styles/layout.css";
 
 export default function MainLayout({ theme, setTheme, lang, setLang }) {
   return (
     <>
+      {/* NAVBAR */}
       <Navbar
         theme={theme}
         setTheme={setTheme}
@@ -13,11 +13,12 @@ export default function MainLayout({ theme, setTheme, lang, setLang }) {
         setLang={setLang}
       />
 
-      {/* CONTENEDOR GLOBAL */}
-      <main className="app-main">
+      {/* PAGE CONTENT */}
+      <main id="page-content">
         <Outlet />
       </main>
 
+      {/* FOOTER */}
       <Footer lang={lang} />
     </>
   );

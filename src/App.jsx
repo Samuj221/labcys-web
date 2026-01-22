@@ -1,7 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import MainLayout from "./layouts/MainLayout";
 
+import MainLayout from "./layouts/MainLayout";
+import { useLanguage } from "./context/LanguageContext";
+
+// Pages
 import Home from "./pages/Home";
 import Servicios from "./pages/Servicios";
 import ServicioDetalle from "./pages/ServicioDetalle";
@@ -10,62 +13,53 @@ import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
 
+// Styles
 import "./styles/theme.css";
+import "./styles/layout.css";
 
 function App() {
   const [theme, setTheme] = useState("dark");
-  const [lang, setLang] = useState("es");
 
-  // 🔹 Asegura que el theme SIEMPRE exista desde el primer render
+  // 🌐 Language desde CONTEXT
+  const { lang } = useLanguage();
+
+  /* ======================
+     THEME HANDLING
+  ====================== */
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <MainLayout
+            theme={theme}
+            setTheme={setTheme}
+          />
+        }
+      >
+        {/* HOME */}
+        <Route index element={<Home />} />
+
+        {/* SERVICES */}
+        <Route path="servicios" element={<Servicios />} />
+        <Route path="servicios/:slug" element={<ServicioDetalle />} />
         <Route
-          path="/"
-          element={
-            <MainLayout
-              theme={theme}
-              setTheme={setTheme}
-              lang={lang}
-              setLang={setLang}
-            />
-          }
-        >
-          <Route index element={<Home lang={lang} />} />
+          path="servicios/:slug/:lab"
+          element={<LaboratorioDetalle />}
+        />
 
-          <Route
-            path="servicios"
-            element={<Servicios lang={lang} />}
-          />
+        {/* STATIC */}
+        <Route path="nosotros" element={<Nosotros />} />
+        <Route path="contacto" element={<Contacto />} />
 
-          <Route
-            path="servicios/:slug"
-            element={<ServicioDetalle lang={lang} />}
-          />
-
-          <Route
-            path="servicios/:slug/:lab"
-            element={<LaboratorioDetalle lang={lang} />}
-          />
-
-          <Route
-            path="nosotros"
-            element={<Nosotros lang={lang} />}
-          />
-
-          <Route
-            path="contacto"
-            element={<Contacto lang={lang} />}
-          />
-
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 

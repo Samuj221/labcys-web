@@ -8,31 +8,50 @@
   z-index: 1000;
   width: 100%;
   background: var(--bg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  overflow-x: hidden;
+  border-bottom: 1px solid var(--border);
 }
 
 /* CONTAINER */
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 18px 6%;
+  padding: 16px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
 /* ===========================
    LOGO
 =========================== */
 
+
 .logo {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  white-space: nowrap;
+}
+
+.logo img {
+  transition: transform 0.25s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+}
+
+
+/* ===========================
+   MENU BUTTON (MOBILE)
+=========================== */
+
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
 }
 
 /* ===========================
@@ -41,23 +60,29 @@
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 32px;
 }
 
-.nav a {
-  position: relative;
+.nav a,
+.nav-parent {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.25s ease;
+  position: relative;
+  transition: color .25s ease;
 }
 
 .nav a:hover,
-.nav a.active {
+.nav a.active,
+.nav-parent:hover {
   color: var(--accent);
 }
 
-/* underline animation */
+/* underline */
 .nav a::after {
   content: "";
   position: absolute;
@@ -66,7 +91,7 @@
   width: 0;
   height: 2px;
   background: var(--accent);
-  transition: width 0.3s ease;
+  transition: width .3s ease;
 }
 
 .nav a:hover::after,
@@ -75,7 +100,55 @@
 }
 
 /* ===========================
-   ACTION BUTTONS
+   SERVICES SUBMENU
+=========================== */
+
+.nav-group {
+  position: relative;
+}
+
+.nav-submenu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 14px;
+  min-width: 260px;
+  box-shadow: var(--shadow);
+  animation: fadeUp .3s ease;
+}
+
+.submenu-group {
+  margin-bottom: 18px;
+}
+
+.submenu-title {
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.nav-submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-submenu li a {
+  display: block;
+  padding: 6px 0;
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+.nav-submenu li a:hover {
+  color: var(--accent);
+}
+
+/* ===========================
+   ACTIONS
 =========================== */
 
 .header-actions {
@@ -83,20 +156,18 @@
   gap: 12px;
 }
 
-.theme-btn,
-.lang-btn {
+.header-actions button {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--border);
   color: var(--text);
   padding: 8px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.25s ease;
+  transition: all .25s ease;
 }
 
-.theme-btn:hover,
-.lang-btn:hover {
+.header-actions button:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
@@ -106,33 +177,45 @@
    MOBILE
 =========================== */
 
-.menu-btn {
-  display: none;
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: var(--text);
-  cursor: pointer;
-}
-
 @media (max-width: 900px) {
+
   .menu-btn {
     display: block;
   }
 
   .nav {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    background: var(--bg);
+    height: 100vh;
+    background: #1a1a1d;
     flex-direction: column;
-    padding: 24px 0;
-    gap: 20px;
-    display: none;
+    align-items: flex-start;
+    padding: 90px 6%;
+    gap: 22px;
+    transform: translateX(-100%);
+    transition: transform .35s ease;
   }
 
   .nav.open {
-    display: flex;
+    transform: translateX(0);
+  }
+
+  .nav a,
+  .nav-parent {
+    font-size: 1.1rem;
+  }
+
+  /* MOBILE SUBMENU */
+  .nav-submenu {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    padding: 10px 0 0;
+  }
+
+  .submenu-title {
+    font-size: 1rem;
   }
 }

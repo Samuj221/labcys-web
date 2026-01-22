@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import HeroCarousel from "../components/HeroCarousel";
 import "../styles/home.css";
 
 export default function Home({ lang }) {
@@ -8,6 +9,7 @@ export default function Home({ lang }) {
       {/* ================= HERO ================= */}
       <section className="home-hero">
         <div className="home-hero-content">
+
           <h1>
             {lang === "es"
               ? "Metrología confiable para la industria moderna"
@@ -29,6 +31,10 @@ export default function Home({ lang }) {
               {lang === "es" ? "Solicitar cotización" : "Request a quote"}
             </NavLink>
           </div>
+
+          {/* ===== HERO CAROUSEL ===== */}
+          <HeroCarousel />
+
         </div>
       </section>
 
